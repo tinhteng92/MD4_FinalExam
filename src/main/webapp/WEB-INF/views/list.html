@@ -8,6 +8,8 @@
 <h3>Staff List</h3>
 <p th:text="${message}" style="color: blue"></p>
 <p><a href="/create">Add new staff</a></p>
+<br>
+<p><a href="/sort">Sort By Age</a></p>
 
 <form action="/search" method="post">
     <input name="search" placeholder="Enter name">
@@ -35,7 +37,7 @@
         <td th:text="${s.salary}"></td>
         <td th:text="${s.branch.nameB}"></td>
         <td><a th:href="@{/edit/{id}(id = ${s.id})}">Update</a></td>
-        <td><a th:href="@{/delete/{id}(id = ${s.id})}">Delete</a></td>
+        <td><a  th:href="@{/delete/{id}(id = ${s.id})}">Delete</a></td>
         <td><a th:href="@{/view/{id}(id = ${s.id})}">View</a></td>
     </tr>
     </tbody>

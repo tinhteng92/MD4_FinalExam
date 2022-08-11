@@ -2,6 +2,7 @@ package com.codegym.controller;
 
 import com.codegym.model.Branch;
 import com.codegym.model.Staff;
+import com.codegym.repository.IStaffRepo;
 import com.codegym.service.BranchService;
 import com.codegym.service.StaffService;
 import com.codegym.validate.ValidateEditStaff;
@@ -19,6 +20,8 @@ import java.util.Optional;
 
 @Controller
 public class StaffController {
+    @Autowired
+    IStaffRepo iStaffRepo;
     @Autowired
     StaffService staffService;
 
@@ -123,4 +126,11 @@ public class StaffController {
         return modelAndView;
     }
 
+    @GetMapping("/sort")
+    public ModelAndView sort(@RequestParam(defaultValue = "") String message) {
+        ModelAndView modelAndView = new ModelAndView("list");
+        modelAndView.addObject("staffs", iStaffRepo.sortByAge());
+        modelAndView.addObject("message", message);
+        return modelAndView;
+    }
 }
