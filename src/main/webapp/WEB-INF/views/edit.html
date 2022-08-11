@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head"></head>
+    <meta charset="UTF-8">
+    <title>Edit Staff</title>
+</head>
+<body>
+<p><a href="/staff">Back to Staff list</a></p>
+<div id="form">
+    <form th:object="${staff}" method="post" >
+        <input type="hidden" th:field="*{id}">
+        <div>
+            <label>Name</label>
+            <input type="text" th:field="*{name}"/>
+            <p style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+
+        </div>
+        <div>
+            <label>Age</label>
+            <input type="text" th:field="*{age}"/>
+            <p style="color: red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></p>
+        </div>
+        <div>
+            <label>Salary</label>
+            <input type="text" th:field="*{salary}"/>
+        </div>
+        <div>
+            <select th:field="*{branch}">
+                <option th:each="b:${branchList}" th:text="${b.nameB}" th:value="${b.idB}"></option>
+            </select>
+        </div>
+        <input type="submit" value="Update"/>
+        <button><a href="/staff">Cancel</a></button>
+    </form>
+
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

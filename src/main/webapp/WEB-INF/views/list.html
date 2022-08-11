@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Staff List</h3>
+<p th:text="${message}" style="color: blue"></p>
+<p><a href="/create">Add new staff</a></p>
+
+<form action="/search" method="post">
+    <input name="search" placeholder="Enter name">
+    <input value="Search" type="submit">
+</form>
+
+<table id="customers">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Salary</th>
+        <th>Branch</th>
+        <th>Update</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="s, loop : ${staffs}">
+        <td th:text="${loop.count}"></td>
+        <td th:text="${s.name}"></td>
+        <td th:text="${s.age}"></td>
+        <td th:text="${s.salary}"></td>
+        <td th:text="${s.branch.nameB}"></td>
+        <td><a th:href="@{/edit/{id}(id = ${s.id})}">Update</a></td>
+        <td><a th:href="@{/delete/{id}(id = ${s.id})}">Delete</a></td>
+        <td><a th:href="@{/view/{id}(id = ${s.id})}">View</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

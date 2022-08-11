@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+    <meta charset="UTF-8">
+    <title>View Staff</title>
+</head>
+<body>
+<h3>Details Staff</h3>
+<p><a href="/staff">Back to staff list</a></p>
+<div id="form">
+    <form th:object="${staff}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <div>
+            <label>Name</label>
+            <input type="text" th:field="*{name}"/>
+
+        </div>
+        <div>
+            <label>Age</label>
+            <input type="text" th:field="*{age}"/>
+            <p></p>
+        </div>
+        <div>
+            <label>Salary</label>
+            <input type="text" th:field="*{salary}"/>
+        </div>
+        <div>
+            <label>Branch</label>
+            <input type="text" th:field="*{branch.nameB}"/>
+        </div>
+
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

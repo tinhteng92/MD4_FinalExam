@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head th:replace="layout :: head">
+    <meta charset="UTF-8">
+    <title>Remove Staff</title>
+</head>
+<body>
+<h3>Remove Staff</h3>
+<p><a href="/staff">Back to Staff list</a></p>
+
+<div id="form">
+    <form th:object="${staff}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label>Name</label>
+            <input type="text" th:field="*{name}"/>
+        </div>
+        <div>
+            <label>Age</label>
+            <input type="text" th:field="*{age}"/>
+        </div>
+        <div>
+            <label>Salary</label>
+            <input type="text" th:field="*{salary}"/>
+        </div>
+        <div>
+            <label>Branch</label>
+            <input type="text" th:field="*{branch.nameB}"/>
+        </div>
+
+        <input type="submit" value="Remove"/>
+
+    </form>
+</div>
+<footer th:replace="layout :: footer"></footer>
+</body>
+</html>
